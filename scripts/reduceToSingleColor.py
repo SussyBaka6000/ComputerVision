@@ -26,7 +26,7 @@ def reduceToSingleColor(string , letter):
     pyplot.show()
     
 
-reduceToSingleColor("images/flower.jpg", "b")
-reduceToSingleColor("images/flower.jpg", "r")
-reduceToSingleColor("images/flower.jpg", "g")
-reduceToSingleColor("images/flower.jpg", "m")
+reduceToSingleColor("./resources/flower.jpg", "b")
+reduceToSingleColor("./resources/flower.jpg", "r")
+reduceToSingleColor("./resources/flower.jpg", "g")
+reduceToSingleColor("./resources/flower.jpg", "m")
