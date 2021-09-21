@@ -1,15 +1,18 @@
-import cv2
-import matplotlib.pyplot as plt
-from playground import show_image
+import numpy as np
+from PIL import Image
+import matplotlib.pyplot as pyplot
 
 ## 1. convertToGrayScale
 
-def convertToGrayScale(img):
-    gray_image = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    show_image(gray_image)
+def convertToGrayScale(image_path):
+    image = Image.open(image_path)
+    image_grey = image.convert('LA')
+    image_grey.show()
+    print(image_grey.mode)
+    return image_grey
 
 
 ## calling the method
 
-cast = cv2.imread('../resources/cast.jpg')
-convertToGrayScale(cast)
+path = '../resources/cast.jpg'
+convertToGrayScale(path)

@@ -13,7 +13,7 @@ def show_image(name):
     cv2.destroyWindow('image')
 
 
-cast = cv2.imread('../resources/cast.jpg')
+# cast = cv2.imread('../resources/cast.jpg')
 # show_image(cast)
 
 ###################################################################################
@@ -29,8 +29,8 @@ cast = cv2.imread('../resources/cast.jpg')
 
 
 #
-cast_gray = cv2.cvtColor(cast,cv2.COLOR_BGR2GRAY)
-show_image(cast_gray)
+# cast_gray = cv2.cvtColor(cast,cv2.COLOR_BGR2GRAY)
+# show_image(cast_gray)
 
 ###################################################################################################
 #
