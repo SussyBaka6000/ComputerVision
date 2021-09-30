@@ -24,6 +24,7 @@ def reduceToSingleColor(string , letter):
     reduced[:,:,color] = 0
     pyplot.imshow(reduced,aspect="auto")
     pyplot.show()
+    return reduced
     
 
 reduceToSingleColor("./resources/flower.jpg", "b")
