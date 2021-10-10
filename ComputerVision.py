@@ -8,7 +8,7 @@ class ComputerVision:
     creators = ""
 
     def __init__(self):
-        self.creators = "Maria Salbov, Halil Altif, Geva Jacobovitz"
+        self.creators = "Maria Slavov, Halil Altif, Geva Jacobovitz"
 
     @staticmethod
     def convertToGrayScale(image_path):
@@ -99,60 +99,64 @@ class ComputerVision:
         return order_res
 
     @staticmethod
-    def extendedDetectObject(string, faceBool, eyeBool):
-        if (isinstance(faceBool, bool) == False or isinstance(eyeBool, bool) == False):
-            return (print("Pleace Enter True or False"))
-        if (faceBool == False and eyeBool == False):
-            return (print("Nothing to detect"))
+    def extendedDetectObject(string , faceBool, eyeBool):
+        if(isinstance(faceBool, bool)==False or isinstance(eyeBool, bool) ==False):
+            return(print ("Pleace Enter True or False"))
+        if(faceBool == False and eyeBool == False): 
+            return(print ("Nothing to detect"))
 
         def show_image(name):
             while True:
                 cv2.imshow('image', name)
                 key_pressed = cv2.waitKey(0)
                 # if key_pressed & 27: # by default
-                if key_pressed & ord('q'):  # q character is pressed
+                if key_pressed & ord('q'): # q character is pressed
                     break
             # cv2.destroyWindow('image') # release image window resources
             cv2.destroyAllWindows()
 
+
         imageToCheck = cv2.imread(string)
         # show_image(imageToCheck)
 
-        gray = cv2.cvtColor(imageToCheck, cv2.COLOR_BGR2GRAY)
+        newImage = imageToCheck.copy()
+        # copy imageToCheck to newImage
+
+        gray = cv2.cvtColor(newImage,cv2.COLOR_BGR2GRAY)
         # show_image(gray)
 
         # choose classifier and training set
         face_classifier = \
             cv2.CascadeClassifier(cv2.data.haarcascades
-                                  + 'haarcascade_frontalface_default.xml')
+                                + 'haarcascade_frontalface_default.xml')
 
-        # choose eye classifier and traning set
+        # choose eye classifier and traning set 
         eye_classifier = \
-            cv2.CascadeClassifier(cv2.data.haarcascades
-                                  + 'haarcascade_eye.xml')
+            cv2.CascadeClassifier(cv2.data.haarcascades 
+                                +'haarcascade_eye.xml')
 
         face = face_classifier.detectMultiScale(gray)
         eye = eye_classifier.detectMultiScale(gray)
 
-        if (faceBool == True):
-            for (_x, _y, _w, _h) in face:
-                cv2.rectangle(imageToCheck,
-                              (_x, _y),  # upper-left corner
-                              (_x + _w, _y + _h),  # lower-right corner
-                              (0, 255, 0),
-                              10)
+        if(faceBool == True):
+            for(_x,_y,_w,_h) in face:
+                cv2.rectangle(newImage,
+                            (_x,_y), # upper-left corner
+                            (_x+_w,_y+_h), # lower-right corner
+                            (0,255,0),
+                            10)
 
         # show_image(imageToCheck)
-        if (eyeBool == True):
-            for (_x, _y, _w, _h) in eye:
-                cv2.rectangle(imageToCheck,
-                              (_x, _y),  # upper-left corner
-                              (_x + _w, _y + _h),  # lower-right corner
-                              (0, 0, 0),
-                              10)
+        if(eyeBool==True):
+            for(_x,_y,_w,_h) in eye:
+                cv2.rectangle(newImage,
+                            (_x,_y), # upper-left corner
+                            (_x+_w,_y+_h), # lower-right corner
+                            (0,0,0),
+                            10)
 
-        show_image(imageToCheck)
-        return (imageToCheck)
+        show_image(newImage)
+        return(newImage)
 
     @staticmethod
     def detectFaceInVideo(path):
@@ -203,35 +207,45 @@ class ComputerVision:
 
         imageToCheck = cv2.imread(image_path)
 
+        newImage = imageToCheck.copy()
+        # copy imageToCheck to newImage
+
         # הופכים לאפור כדי לבצע איתור
-        gray = cv2.cvtColor(imageToCheck, cv2.COLOR_BGR2GRAY)
+        gray = cv2.cvtColor(newImage, cv2.COLOR_BGR2GRAY)
 
         face_classifier = \
             cv2.CascadeClassifier(cv2.data.haarcascades
-                                  + 'haarcascade_frontalface_default.xml')
+                                + 'haarcascade_frontalface_default.xml')
 
         eye_classifier = \
             cv2.CascadeClassifier(cv2.data.haarcascades
-                                  + 'haarcascade_eye.xml')
+                                + 'haarcascade_eye.xml')
 
         face = face_classifier.detectMultiScale(gray)
         eye = eye_classifier.detectMultiScale(gray)
 
-        if (area == "face"):
+        if (area == "face" and face ):
+            print("if1")
             for (_x, _y, _w, _h) in face:
-                cv2.rectangle(imageToCheck,
-                              (_x, _y),  # upper-left corner
-                              (_x + _w, _y + _h),  # lower-right corner
-                              (0, 255, 0),
-                              10)
+                cv2.rectangle(newImage,
+                            (_x, _y),  # upper-left corner
+                            (_x + _w, _y + _h),  # lower-right corner
+                            (0, 255, 0),
+                            10)
+            show_image(newImage) 
 
-        if (area == "eyes"):
+        if (area == "eyes" and eye):
+            print("if2")
             for (_x, _y, _w, _h) in eye:
-                cv2.rectangle(imageToCheck,
-                              (_x, _y),  # upper-left corner
-                              (_x + _w, _y + _h),  # lower-right corner
-                              (0, 0, 0),
-                              10)
+                cv2.rectangle(newImage,
+                            (_x, _y),  # upper-left corner
+                            (_x + _w, _y + _h),  # lower-right corner
+                            (0, 0, 0),
+                            10)
+            show_image(newImage)                        
+        else:
+            print("Area was not detected")
+        
+        return (newImage)
 
-        show_image(imageToCheck)
-        return (imageToCheck)
+

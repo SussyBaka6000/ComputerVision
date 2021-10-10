@@ -21,8 +21,11 @@ def detectObject(image_path, area):
 
     imageToCheck = cv2.imread(image_path)
 
+    newImage = imageToCheck.copy()
+    # copy imageToCheck to newImage
+
     # הופכים לאפור כדי לבצע איתור
-    gray = cv2.cvtColor(imageToCheck, cv2.COLOR_BGR2GRAY)
+    gray = cv2.cvtColor(newImage, cv2.COLOR_BGR2GRAY)
 
     face_classifier = \
         cv2.CascadeClassifier(cv2.data.haarcascades
@@ -37,7 +40,7 @@ def detectObject(image_path, area):
 
     if (area == "face"):
         for (_x, _y, _w, _h) in face:
-            cv2.rectangle(imageToCheck,
+            cv2.rectangle(newImage,
                           (_x, _y),  # upper-left corner
                           (_x + _w, _y + _h),  # lower-right corner
                           (0, 255, 0),
@@ -45,16 +48,16 @@ def detectObject(image_path, area):
 
     if (area == "eyes"):
         for (_x, _y, _w, _h) in eye:
-            cv2.rectangle(imageToCheck,
+            cv2.rectangle(newImage,
                           (_x, _y),  # upper-left corner
                           (_x + _w, _y + _h),  # lower-right corner
                           (0, 0, 0),
                           10)
 
-    show_image(imageToCheck)
-    return (imageToCheck)
+    show_image(newImage)
+    return (newImage)
 
     ## call the function
 
 
-print(detectObject('../resources/faces.jpg', 'eyes'))
+print(detectObject('./resources/faces.jpg', 'eyes'))

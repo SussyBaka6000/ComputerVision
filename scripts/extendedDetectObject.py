@@ -20,7 +20,10 @@ def extendedDetectObject(string , faceBool, eyeBool):
     imageToCheck = cv2.imread(string)
     # show_image(imageToCheck)
 
-    gray = cv2.cvtColor(imageToCheck,cv2.COLOR_BGR2GRAY)
+    newImage = imageToCheck.copy()
+    # copy imageToCheck to newImage
+
+    gray = cv2.cvtColor(newImage,cv2.COLOR_BGR2GRAY)
     # show_image(gray)
 
     # choose classifier and training set
@@ -38,7 +41,7 @@ def extendedDetectObject(string , faceBool, eyeBool):
 
     if(faceBool == True):
         for(_x,_y,_w,_h) in face:
-            cv2.rectangle(imageToCheck,
+            cv2.rectangle(newImage,
                         (_x,_y), # upper-left corner
                         (_x+_w,_y+_h), # lower-right corner
                         (0,255,0),
@@ -47,14 +50,14 @@ def extendedDetectObject(string , faceBool, eyeBool):
     # show_image(imageToCheck)
     if(eyeBool==True):
         for(_x,_y,_w,_h) in eye:
-            cv2.rectangle(imageToCheck,
+            cv2.rectangle(newImage,
                         (_x,_y), # upper-left corner
                         (_x+_w,_y+_h), # lower-right corner
                         (0,0,0),
                         10)
 
-    show_image(imageToCheck)
-    return(imageToCheck)
+    show_image(newImage)
+    return(newImage)
 
 
 
