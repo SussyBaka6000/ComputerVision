@@ -1,31 +1,22 @@
-
 import numpy as np
 from PIL import Image
-import matplotlib.pyplot as pyplot
-import cv2
-import sys
 from ComputerVision import *
 
-# from scripts import shapeDictionary 
-
-
-
-
-# img1 = Image.open('resources/cast.jpg')
-# img2 = Image.open('resources/flower.jpg')
-# img3 = Image.open('resources/mayim.jpg')
-# img4 = Image.open('resources/mayim.jpg')
-# img5 = Image.open('resources/mayim.jpg')
-# img6 = Image.open('resources/mayim.jpg')
-# img7 = Image.open('resources/mayim.jpg')
-# img8 = Image.open('resources/mayim.jpg')
-# img9 = Image.open('resources/mayim.jpg')
-# img10 = Image.open('resources/mayim.jpg')
-# img11 = Image.open('resources/mayim.jpg')
-# img12 = Image.open('resources/mayim.jpg')
-# img13 = Image.open('resources/mayim.jpg')
-# my_list = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13]
-# res = ComputerVision.collageMaker(my_list)
+img1 = Image.open('resources/cast.jpg')
+img2 = Image.open('resources/flower.jpg')
+img3 = Image.open('resources/mayim.jpg')
+img4 = Image.open('resources/mayim.jpg')
+img5 = Image.open('resources/mayim.jpg')
+img6 = Image.open('resources/mayim.jpg')
+img7 = Image.open('resources/mayim.jpg')
+img8 = Image.open('resources/mayim.jpg')
+img9 = Image.open('resources/mayim.jpg')
+img10 = Image.open('resources/mayim.jpg')
+img11 = Image.open('resources/mayim.jpg')
+img12 = Image.open('resources/mayim.jpg')
+img13 = Image.open('resources/mayim.jpg')
+my_list = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13]
+res = ComputerVision.collageMaker(my_list)
 
 
 
@@ -42,11 +33,11 @@ from ComputerVision import *
 # ComputerVision.convertToGrayScale(path)
 
 
-# # ComputerVision.detectFaceInVideo('resources/test.mp4')
+# ComputerVision.detectFaceInVideo('resources/test.mp4')
 
 
 
-ComputerVision.detectObject('resources/flower.jpg','eyes')
+# ComputerVision.detectObject('resources/flower.jpg','eyes')
 # ComputerVision.detectObject('resources/faces.jpg', 'face')
 
 
@@ -65,14 +56,11 @@ ComputerVision.detectObject('resources/flower.jpg','eyes')
 
 
 
-# flower = np.array(Image.open('resources/flower.jpg'))
-# img1 = np.array(Image.open('resources/1.jpg'))
-# img2 = np.array(Image.open('resources/2.jpg'))
-# cast = np.array(Image.open('resources/cast.jpg'))
-
+# flower = Image.open('resources/flower.jpg')
+# img1 = Image.open('resources/1.jpg')
+# img2 = Image.open('resources/2.jpg')
+# cast = Image.open('resources/cast.jpg')
 # list = [img1,cast,flower,img2]
 
 
 # ComputerVision.shapeDictionary(list)
-# # shapeDictionary.shapeDictionary(list)
-# print(globals())
