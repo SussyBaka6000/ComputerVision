@@ -61,6 +61,4 @@ res = ComputerVision.collageMaker(my_list)
 # img2 = Image.open('resources/2.jpg')
 # cast = Image.open('resources/cast.jpg')
 # list = [img1,cast,flower,img2]
-
-
 # ComputerVision.shapeDictionary(list)

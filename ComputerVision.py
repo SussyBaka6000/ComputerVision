@@ -85,12 +85,16 @@ class ComputerVision:
         shape_list = []
         name_list = []
         for i in list:
-            shape = np.array(i).shape  # create tupple whith size of ndarray matrix
+            shape = np.array(i).shape  #create tupple whith size of ndarray matrix
             shape_list.append(shape)  # create list of tuples
-            name = "img on index " + str(list.index(i))  # create name for the dictionary key
-            name_list.append(name)  # create list of keys
-        res = dict(zip(name_list, shape_list))  # create dictionary from 2 list
-        order_res = {k: v for k, v in sorted(res.items(), key=lambda v: v[1][0])}  # order dictionary by rows
+            name = "img on index "+str(list.index(i)) # create name for the dictionary key
+            name_list.append(name) # create list of names 
+
+        print('Tuples of the img sizes:',shape_list) #the prints are for check 
+        res = dict(zip(name_list,shape_list)) # create dict from 2 list
+        print('Dictionary:',res)  #the prints are for check 
+        order_res = {k: v for k, v in sorted(res.items(),key = lambda v: v[1][0])} #order dict by values
+        print('Ordered Dictionary by rows',order_res) #the prints are for check 
         return order_res
 
     @staticmethod
